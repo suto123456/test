@@ -17,6 +17,9 @@ class ItemController extends Controller
         //selectのときは必ずgetする
         $items = Item::select("id","name","price","is_selling")->get();
 
+        //inertiaの場合はコンポーネントのパスを指定
+        //第二引数に配列を渡し変数名をキーにする。
+        //vue側でdefinePropsで変数を受け取る
         return Inertia::render("Items/Index",[
             "items" => $items
         ]);
@@ -50,6 +53,7 @@ class ItemController extends Controller
             "price" => $request->price
         ]);
 
+        ///ルートの場合はルーティング名を指定しリダイレクト
         return to_route("items.index")
         ->with([
             "message"=>"登録しました",

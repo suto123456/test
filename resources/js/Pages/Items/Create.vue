@@ -9,6 +9,7 @@ defineProps({
     errors:Object
 })
 
+//v-modelで紐づけた入力値を動的に取得する
 const form = reactive({
     name:null,
     memo:null,
@@ -33,6 +34,7 @@ const storeItem = () => {
                    <!--エラーを表示するコンポーネント-->
                     <ValidationErrors :errors="errors" />
                     <section class="text-gray-600 body-font relative">
+                        <!-- submitによるページ遷移を防ぎ指定の関数を呼び出す@submit.prevent -->
                         <form @submit.prevent="storeItem">
                         <div class="container px-5 pt-8 mx-auto">
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
